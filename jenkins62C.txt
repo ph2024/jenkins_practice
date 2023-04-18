@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    environment {
+        DIRECTORY_PATH = "/Users/Paul/Desktop/SIT753/Task 5.1P"
+        TESTING_ENVIRONMENT = "LOCAL STAGING"
+        PRODUCTION_ENVIRONMENT = "PAUL'S ENVIRONMENT"
+    }
+    stages {
+        stage ("Build") {
+            steps {
+                echo "This is the Build stage."
+                echo "Fetch the source code from this directory path: ${DIRECTORY_PATH}."
+                echo "Compile the code and generate any necessary artifacts."
+            }
+        }
+        stage ("Test") {
+            steps {
+                echo "Unit tests"
+                echo "Integration tests"
+            }
+        }
+        stage ("Code Quality Check") {
+            steps {
+                echo "Check the quality of the code."
+            }
+        }
+        stage ("Deploy") {
+            steps {
+                echo "Deploy the application to ${TESTING_ENVIRONMENT}."
+            }
+        }
+        stage ("Approval") {
+            steps {
+                echo "This is the Approval stage."
+                sleep 10
+            }
+        }
+        stage ("Deploy to Production") {
+            steps {
+                echo "Deploy the code to the production environment ${PRODUCTION_ENVIRONMENT}."
+            }
+            post {
+                success{
+                    mail to: "pahigham@gmail.com",
+                    subject: "stage successful",
+                    body: "stage successful"
+                }
+            }
+        }
+    }
+}

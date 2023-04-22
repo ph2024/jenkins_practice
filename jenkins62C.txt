@@ -32,7 +32,7 @@ pipeline {
         stage ("Approval") {
             steps {
                 echo "This is the Approval stage."
-                sleep 10
+                sleep 1
             }
         }
         stage ("Deploy to Production") {

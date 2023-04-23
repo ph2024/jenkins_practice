@@ -37,7 +37,7 @@ pipeline {
                     mail to: "pahigham@gmail.com",
                     subject: "Task 6.2C - Security Scan complete",
                     body: "Task 6.2C - Security Scan complete.",
-                    emailext attachLog: true
+                    emailext attachLog
                 }
                 failure{
                     mail to: "pahigham@gmail.com",

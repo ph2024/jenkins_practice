@@ -36,12 +36,12 @@ pipeline {
                 success{
                     mail to: "pahigham@gmail.com",
                     subject: "Task 6.2C - Security Scan complete",
-                    body: "Task 6.2C - Security Scan complete.",
+                    body: "Task 6.2C - Security Scan complete."
                 }
                 failure{
                     mail to: "pahigham@gmail.com",
                     subject: "Task 6.2C - Security Scan failure",
-                    body: "Task 6.2C - Security Scan failure.",
+                    body: "Task 6.2C - Security Scan failure."
                 }
             }
         }

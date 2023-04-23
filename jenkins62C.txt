@@ -18,8 +18,8 @@ pipeline {
             post {
                 success{
                     mail to: "pahigham@gmail.com",
-                    subject: "Task 6.2C - Unit and Integration Tests complete",
-                    body: "Task 6.2C - Unit and Integration Tests complete."
+                    subject: "Task 6.2C - Unit and Integration Tests success",
+                    body: "Task 6.2C - Unit and Integration Tests success."
                 }
             }
         }
@@ -35,9 +35,8 @@ pipeline {
             post {
                 success{
                     mail to: "pahigham@gmail.com",
-                    subject: "Task 6.2C - Security Scan complete",
-                    body: "Task 6.2C - Security Scan complete.",
-                    emailext attachLog
+                    subject: "Task 6.2C - Security Scan success",
+                    body: "Task 6.2C - Security Scan success."
                 }
                 failure{
                     mail to: "pahigham@gmail.com",

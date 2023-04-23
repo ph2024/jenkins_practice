@@ -47,5 +47,17 @@ pipeline {
                 }
             }
         }
+        stage ("Complete") {
+            steps {
+                echo "Complete."
+            }
+            post {
+                success{
+                    mail to: "pahigham@gmail.com",
+                    subject: "Pipeline complete",
+                    body: "Pipeline complete"
+                }
+            }
+        }
     }
 }

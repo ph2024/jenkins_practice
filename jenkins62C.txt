@@ -18,8 +18,8 @@ pipeline {
             post {
                 success{
                     mail to: "pahigham@gmail.com",
-                    subject: "Task 6.2C - Unit and Integration Tests success",
-                    body: "Task 6.2C - Unit and Integration Tests success."
+                    subject: "Task 6.2C - Unit and Integration Tests ${currentBuild.currentResult}",
+                    body: "Task 6.2C - Unit and Integration Tests ${currentBuild.currentResult}."
                 }
             }
         }
@@ -35,14 +35,13 @@ pipeline {
             post {
                 success{
                     emailext attachLog: true, body: "Task 6.2C - Security Scan ${currentBuild.currentResult}.",
-                    compressLog: true,
                     subject: "Task 6.2C - Security Scan ${currentBuild.currentResult}",
                     to: 'pahigham@gmail.com'
-}
+                }
                 failure{
                     mail to: "pahigham@gmail.com",
-                    subject: "Task 6.2C - Security Scan failure",
-                    body: "Task 6.2C - Security Scan failure."
+                    subject: "Task 6.2C - Security Scan ${currentBuild.currentResult}",
+                    body: "Task 6.2C - Security Scan ${currentBuild.currentResult}."
                 }
             }
         }

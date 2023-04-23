@@ -34,9 +34,9 @@ pipeline {
             }
             post {
                 success{
-                    mail to: "pahigham@gmail.com",
-                    subject: "Task 6.2C - Security Scan success",
-                    body: "Task 6.2C - Security Scan success."
+                    emailext attachlog: true,
+                    subject: "Task 6.2C - Security Scan ${currentBuild.currentResult}",
+                    recipientProviders: "pahigham@gmail.com"
                 }
                 failure{
                     mail to: "pahigham@gmail.com",

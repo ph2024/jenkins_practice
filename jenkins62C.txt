@@ -32,6 +32,7 @@ pipeline {
             steps {
                 echo "Perform a security scan on the code using Spectral to identify any vulnerabilities."
                 mail to: "pahigham@gmail.com",
+                subject: "Task 6.2C - Security Scan success",
             }
             post {
                 success{

@@ -49,13 +49,13 @@ pipeline {
         }
         stage ("Complete") {
             steps {
-                echo "Complete."
+                echo "Complete - 5 minute test."                
             }
             post {
                 success{
                     mail to: "pahigham@gmail.com",
-                    subject: "Pipeline complete",
-                    body: "Pipeline complete"
+                    subject: "Pipeline complete - 5 minute test",
+                    body: "Pipeline complete - 5 minute test"
                 }
             }
         }

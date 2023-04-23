@@ -1,62 +1,59 @@
 pipeline {
     agent any
     environment {
-        DIRECTORY_PATH = "/Users/Paul/Desktop/SIT753/Task 5.1P"
-        TESTING_ENVIRONMENT = "LOCAL STAGING"
-        PRODUCTION_ENVIRONMENT = "PAUL'S ENVIRONMENT"
+        DIRECTORY_PATH = "/Users/Paul/Desktop/SIT753/Task 6.2C"
+        TESTING_ENVIRONMENT = "Selenium"
+        PRODUCTION_ENVIRONMENT = "AWS"
     }
     stages {
-        stage ("Build") {
+        stage ("Stage 1: Build") {
             steps {
-                echo "This is the Build stage."
-                echo "Fetch the source code from this directory path: ${DIRECTORY_PATH}."
-                echo "Compile the code and generate any necessary artifacts."
+                echo "Build the code using Maven to compile and package code."
             }
         }
-        stage ("Test") {
+        stage ("Stage 2: Unit and Integration Tests") {
             steps {
-                echo "Unit tests"
-                echo "Integration tests"
+                echo "Using ${TESTING_ENVIRONMENT}, run unit tests to ensure the code functions as expected and run integration tests to ensure the different components of the application work together as expected."
+            }
+            post {
+                success{
+                    mail to: "pahigham@gmail.com",
+                    subject: "Task 6.2C - Unit and Integration Tests complete",
+                    body: "Task 6.2C - Unit and Integration Tests complete."
+                }
             }
         }
-        stage ("Code Quality Check") {
+        stage ("Stage 3: Code Analysis") {
             steps {
-                echo "Check the quality of the code."
+                echo "Integrate CheckStyle to analyse the code and ensure it meets industry standards."
             }
         }
-        stage ("Deploy") {
+        stage ("Stage 4: Security Scan") {
             steps {
-                echo "Deploy the application to ${TESTING_ENVIRONMENT}."
+                echo "Perform a security scan on the code using Spectral to identify any vulnerabilities."
+            }
+            post {
+                success{
+                    mail to: "pahigham@gmail.com",
+                    subject: "Task 6.2C - Security Scan complete",
+                    body: "Task 6.2C - Security Scan complete."
+                }
             }
         }
-        stage ("Approval") {
+        stage ("Stage 5: Deploy to Staging") {
             steps {
-                echo "This is the Approval stage."
+                echo "Deploy application to ${PRODUCTION_ENVIRONMENT} staging server."
                 sleep 1
             }
         }
-        stage ("Deploy to Production") {
+        stage ("Stage 6: Integration Tests on Staging") {
             steps {
-                echo "Deploy the code to the production environment ${PRODUCTION_ENVIRONMENT}."
-            }
-            post {
-                success{
-                    mail to: "pahigham@gmail.com",
-                    subject: "stage successful",
-                    body: "stage successful"
-                }
+                echo "Run integration tests on ${PRODUCTION_ENVIRONMENT} staging environment to ensure the application functions as expected in a production-like environment."
             }
         }
-        stage ("Complete") {
+        stage ("Stage 7: Deploy to Production") {
             steps {
-                echo "Complete - 5 minute test."                
-            }
-            post {
-                success{
-                    mail to: "pahigham@gmail.com",
-                    subject: "Pipeline complete - 5 minute test",
-                    body: "Pipeline complete - 5 minute test"
-                }
+                echo "deploy the application to ${PRODUCTION_ENVIRONMENT} production server."
             }
         }
     }

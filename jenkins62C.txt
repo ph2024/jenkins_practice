@@ -9,7 +9,6 @@ pipeline {
         stage ("Stage 1: Build") {
             steps {
                 echo "Build the code using Maven to compile and package code."
-                echo "Build the code using Maven to compile and package code."            }
         }
         stage ("Stage 2: Unit and Integration Tests") {
             steps {

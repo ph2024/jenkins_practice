@@ -22,9 +22,9 @@ pipeline {
                     to: "pahigham@gmail.com"
                 }
                 failure{
-                    mail to: "pahigham@gmail.com",
+                    emailext attachLog: true, body: "Task 6.2C - Unit and Integration Tests ${currentBuild.currentResult}.",
                     subject: "Task 6.2C - Unit and Integration Tests ${currentBuild.currentResult}",
-                    body: "Task 6.2C - SecurUnit and Integration Tests ${currentBuild.currentResult}."
+                    to: "pahigham@gmail.com"
                 }
             }
         }
@@ -42,6 +42,11 @@ pipeline {
                     mail to: "pahigham@gmail.com",
                     subject: "Task 6.2C - Security Scan ${currentBuild.currentResult}",
                     body: "Task 6.2C - Security Scan ${currentBuild.currentResult}."
+                }
+                failure{
+                    emailext attachLog: true, body: "Task 6.2C - Security Scan ${currentBuild.currentResult}.",
+                    subject: "Task 6.2C - Security Scan ${currentBuild.currentResult}",
+                    to: "pahigham@gmail.com"
                 }
             }
         }

@@ -40,8 +40,8 @@ pipeline {
             post {
                 success{
                 mail to: "pahigham@gmail.com",
-                    subject: "Task 6.2C - Security Scan failure",
-                    body: "Task 6.2C - Security Scan failure."
+                    subject: "Task 6.2C - Security Scan ${currentBuild.currentResult}",
+                    body: "Task 6.2C - Security Scan ${currentBuild.currentResult}."
                 }
             }
         }

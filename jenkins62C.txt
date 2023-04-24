@@ -48,7 +48,6 @@ pipeline {
         stage ("Stage 5: Deploy to Staging") {
             steps {
                 echo "Deploy application to ${PRODUCTION_ENVIRONMENT} staging server."
-                sleep 1
             }
         }
         stage ("Stage 6: Integration Tests on Staging") {

@@ -9,6 +9,7 @@ pipeline {
         stage ("Stage 1: Build") {
             steps {
                 echo "Build the code using Maven to compile and package code."
+                echo "Build the code using Maven to compile and package code."
             }
         }
         stage ("Stage 2: Unit and Integration Tests") {
@@ -39,9 +40,9 @@ pipeline {
             }
             post {
                 success{
-                    mail to: "pahigham@gmail.com",
+                    emailext attachLog: true, body: "Task 6.2C - Security Scan ${currentBuild.currentResult}.",
                     subject: "Task 6.2C - Security Scan ${currentBuild.currentResult}",
-                    body: "Task 6.2C - Security Scan ${currentBuild.currentResult}."
+                    to: "pahigham@gmail.com"
                 }
                 failure{
                     emailext attachLog: true, body: "Task 6.2C - Security Scan ${currentBuild.currentResult}.",
